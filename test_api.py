@@ -87,7 +87,6 @@ def test_status(start_server):
         'full-info': True
     })
     results = status_response_full.json()
-    print('-----------------results', results)
     assert len(results) == 2
     for result in results:
         assert result.get('made_at')

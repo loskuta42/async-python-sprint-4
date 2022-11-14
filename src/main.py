@@ -6,6 +6,7 @@ from src.api.v1 import base
 from src.core import config
 from src.core.config import app_settings
 
+
 app = FastAPI(
     title=app_settings.app_title,
     docs_url="/api/openapi",

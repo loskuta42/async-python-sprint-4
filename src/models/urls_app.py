@@ -25,5 +25,3 @@ class ShortUrl(Base):
     requests = relationship('Request', backref='url', cascade="all, delete")
     short_form = Column(String(6), nullable=False)
     deleted = Column(Boolean, default=False)
-
-

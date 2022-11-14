@@ -5,7 +5,13 @@ from src.schemas.short_url import MultiShortUrlCreate, ShortUrlCreate
 from .base import RepositoryShotUrlDB
 
 
-class RepositoryShortUrl(RepositoryShotUrlDB[ShortUrlModel, RequestModel, ShortUrlCreate, MultiShortUrlCreate]):
+class RepositoryShortUrl(
+    RepositoryShotUrlDB[
+        ShortUrlModel,
+        RequestModel,
+        ShortUrlCreate,
+        MultiShortUrlCreate
+    ]):
     pass
 
 

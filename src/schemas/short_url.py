@@ -20,9 +20,6 @@ class ListRequest(BaseModel):
 class RequestCount(BaseModel):
     requests_number: int
 
-    # class Config:
-    #     orm_mode = True
-
 
 class ShortUrlBase(BaseModel):
     origin_url: str
@@ -67,12 +64,6 @@ class ShortUrl(ShortUrlBase):
         orm_mode = True
 
 
-# # Properties to return to client
-# class ShortUrl(ShortUrlInDBBase):
-#     pass
-
-
-# Properties stored in DB
 class ShortUrlInDB(ShortUrlBase):
     id: int
     origin_url: str

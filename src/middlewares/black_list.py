@@ -1,8 +1,16 @@
 import typing
+from http import HTTPStatus
+import logging.config
 
 from starlette.datastructures import Headers
 from starlette.responses import JSONResponse
 from starlette.types import ASGIApp, Receive, Scope, Send
+
+from src.core.logger import LOGGING
+
+
+logging.config.dictConfig(LOGGING)
+logger = logging.getLogger(__name__)
 
 ENFORCE_DOMAIN_WILDCARD = "Domain wildcard patterns must be like '*.example.com'."
 
@@ -24,7 +32,12 @@ class BlackListHostMiddleware:
         self.blocked_hosts = list(blocked_hosts)
         self.block_any = '*' in blocked_hosts
 
-    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+    async def __call__(
+            self,
+            scope: Scope,
+            receive: Receive,
+            send: Send
+    ) -> None:
         if scope['type'] not in (
             'http',
             'websocket',
@@ -45,5 +58,8 @@ class BlackListHostMiddleware:
         if is_valid_host:
             await self.app(scope, receive, send)
         else:
-            response: JSONResponse = JSONResponse(status_code=400, content={'error': 'Host in black list'})
+            response: JSONResponse = JSONResponse(
+                status_code=HTTPStatus.BAD_REQUEST,
+                content={'error': 'Host in black list'}
+            )
             await response(scope, receive, send)
