@@ -11,7 +11,8 @@ class RepositoryShortUrl(
         RequestModel,
         ShortUrlCreate,
         MultiShortUrlCreate
-    ]):
+    ]
+):
     pass
 
 

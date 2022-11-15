@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List
+from typing import List, Union
 
 from pydantic import BaseModel
 
@@ -18,6 +18,7 @@ class ListRequest(BaseModel):
 
 
 class RequestCount(BaseModel):
+    description: Union[str, None] = None
     requests_number: int
 
 
@@ -26,6 +27,7 @@ class ShortUrlBase(BaseModel):
 
 
 class ShortUrlResponse(BaseModel):
+    description: Union[str, None] = None
     short_url: str
 
     class Config:
@@ -53,6 +55,7 @@ class MultiShortUrlCreate(BaseModel):
 
 
 class ShortUrl(ShortUrlBase):
+    description: Union[str, None] = None
     id: int
     origin_url: str
     short_url: str

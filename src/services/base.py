@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import Request as ClientRequest
 from sqlalchemy.future import select
 
-from src.core import config
+from src.core.config import app_settings
 from src.db.db import Base
 
 
@@ -100,9 +100,9 @@ class RepositoryShotUrlDB(
         short_url = ''.join(
             [
                 'http://',
-                config.PROJECT_HOST,
+                app_settings.project_host,
                 ':',
-                str(config.PROJECT_PORT),
+                str(app_settings.project_port),
                 '/api/v1/short_url/',
                 short_form
             ])
@@ -138,7 +138,6 @@ class RepositoryShotUrlDB(
         await db.commit()
         for obj in objects_to_db:
             await db.refresh(obj)
-        print(objects_to_db)
         return objects_to_db
 
     async def add_request(
