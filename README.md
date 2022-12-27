@@ -11,6 +11,8 @@ $ docker-compose up -d --build
 $ docker-compose exec web alembic upgrade head
 ```
 
+`SwaggerUI`: http://127.0.0.1:8080/api/openapi .
+
 ## Описание функционала
 
 Реализован **http**-сервис, который обрабатывает поступающие запросы. Сервер стартует по адресу `http://127.0.0.1:8080`.
