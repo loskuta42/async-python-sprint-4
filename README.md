@@ -2,7 +2,7 @@
 
 ## Стек.
 
-`FastAPI`, `PostgreSQL`, `SQLAlchemy`, `SQLAlchemy-Utils`, `pydantic`, `alembic`, `uvicorn`, `Docker`.
+`FastAPI`, `PostgreSQL`, `SQLAlchemy`, `pydantic`, `alembic`, `uvicorn`, `Docker`.
 
 ## Запуск приложения.
 
